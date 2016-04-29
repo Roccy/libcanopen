@@ -15,6 +15,7 @@
 #include <sys/ioctl.h>
 #include <net/if.h>
 #include <unistd.h>
+#include <fcntl.h>
  
 #include <linux/can.h>
 #include <linux/can/raw.h>
@@ -51,7 +52,8 @@ can_socket_open(char *interface)
     addr.can_family = AF_CAN;
     addr.can_ifindex = ifr.ifr_ifindex;
     bind(sock, (struct sockaddr*)&addr, sizeof(addr)); // XXX Add check
- 
+    int status = fcntl(sock, F_SETFL, fcntl(sock, F_GETFL, NULL) | O_NONBLOCK); 
+    printf("%d", status);
     return sock;
 }
 

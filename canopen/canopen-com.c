@@ -125,6 +125,7 @@ canopen_sdo_upload_exp(int sock, uint8_t node, uint16_t index,
 
     while (frame_count < 100) // still needed?
     {
+        usleep(1000000);
         if (canopen_frame_recv(sock, &canopen_frame) != 0)
         {
             return 1;
@@ -195,7 +196,7 @@ canopen_sdo_download_exp(int sock, uint8_t node,     uint16_t index,
 
     while (frame_count < 1000)
     {
-        if (canopen_frame_recv(sock, &canopen_frame) != 0)
+        if(canopen_frame_recv(sock, &canopen_frame) != 0)
         {
             return 1;
         }
@@ -211,7 +212,7 @@ canopen_sdo_download_exp(int sock, uint8_t node,     uint16_t index,
         frame_count++;
     }
 
-    return 1;
+    return 3;
 }
 
 

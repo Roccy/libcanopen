@@ -9,7 +9,7 @@ dnl
 dnl ----------------------------------------------------------------------------
 
 AC_INIT([canopen], [0.1.0], [info@rscada.se], [canopen], [http://www.rscada.se/libcanopen/])
-AM_INIT_AUTOMAKE([-Wall -Werror foreign])
+AM_INIT_AUTOMAKE([-Wall -Werror -Wno-extra-portability foreign])
 
 AC_CONFIG_MACRO_DIR([m4])
 
